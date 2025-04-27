@@ -28,20 +28,21 @@ export const bestSellersProducts = [
     description: 'Authentic 7 Mukhi Nepali Rudraksha with powerful energies.',
   },
   // add other products similarly
+  {
+    title: 'Money Magnet Fusion Band',
+    image: '/energy_stones/money_magnet_fusion/money_magnetbracelet1.jpg',
+    hoverImage: '/energy_stones/money_magnet_fusion/money_magnetbracelet2.jpg',
+    price: 699,
+    originalPrice: 1299,
+    discount: '46% off',
+    slug: 'money-magnet-fusion-band',
+    description: 'Attract abundance and wealth with this beautifully crafted fusion energy band.',
+    rating: 4.9,
+    reviews: 110,
+  },
 ];
 
-//   {
-//     title: 'Money Magnet Fusion Band',
-//     image: '/energy_stones/money_magnet_fusion/money_magnetbracelet1.jpg',
-//     hoverImage: '/energy_stones/money_magnet_fusion/money_magnetbracelet2.jpg',
-//     price: 699,
-//     originalPrice: 1299,
-//     discount: '46% off',
-//     slug: 'money-magnet-fusion-band',
-//     description: 'Attract abundance and wealth with this beautifully crafted fusion energy band.',
-//     rating: 4.9,
-//     reviews: 110,
-//   },
+
 //   {
 //     title: 'Silver Plated Karungali Mala',
 //     image: '/karungali_wearable/karungali_mala/karungalimala1.jpg',
