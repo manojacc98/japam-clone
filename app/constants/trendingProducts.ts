@@ -1,0 +1,50 @@
+export const trendingProducts = [
+    {
+      title: 'Oxi-Silver Plated Mahabali Necklace',
+      slug: 'bajrangbali-necklace',
+      image: '/Bajrangbali_Necklace_2.jpg',
+      hoverImage: '/Bajrangbali_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+    {
+      title: 'Oxi-Silver Plated Ganesh Necklace',
+      slug: 'ganesh-necklace',
+      image: '/Ganesh_Necklace.jpg',
+      hoverImage: '/Ganesh_Necklace_2.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+    {
+      title: 'Oxi-Silver Plated Panchroop Hanuman Ji Necklace',
+      slug: 'hanuman-necklace',
+      image: '/Hanuman_Necklace.jpg',
+      hoverImage: '/Hanuman_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+    {
+      title: 'Gold Plated Nathdwara Krishna Ji Necklace',
+      slug: 'nathdwara-necklace',
+      image: '/Nathdwara_Necklace_2.jpg',
+      hoverImage: '/Nathdwara_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+    {
+      title: 'Oxi-Silver Plated Shiv Tapasya Necklace',
+      slug: 'shiv-tapasya-necklace',
+      image: '/Shiv_Tapasya_Necklace_2.jpg',
+      hoverImage: '/Bajrangbali_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+  ];
+  
+  export default trendingProducts;
+  
