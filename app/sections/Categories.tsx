@@ -16,7 +16,7 @@ export default function Categories() {
   return (
     <section className="w-full bg-gray-50 py-10">
       <div className="max-w-7xl mx-auto px-6"> {/* Changed px-4 ➔ px-6 to make wider */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">Shop Our Collections</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-left text-gray-900 mb-8">Shop Our Collections</h2>
 
         {/* Scroll Container */}
         <div
