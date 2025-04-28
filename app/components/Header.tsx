@@ -1,9 +1,6 @@
-
-// New code:
-
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ShoppingCart, User } from 'lucide-react';
@@ -17,18 +14,42 @@ const rudrakshaCategories = [
 const rudrakshaProducts = [
   {
     name: 'Silver Plated Modern Rudraksha Bracelet',
-    image: '/images/placeholder.jpg',
+    image: '/Om_Trishool_Necklace.jpg',
     link: '/product/silver-plated-modern-rudraksha-bracelet',
   },
   {
     name: 'Gold Plated DuoTone Rudraksha Bracelet',
-    image: '/images/placeholder.jpg',
+    image: '/Ganesh_Necklace.jpg',
+    link: '/product/gold-plated-duotone-rudraksha-bracelet',
+  },
+  {
+    name: 'Gold Plated DuoTone Rudraksha Bracelet',
+    image: '/Shiv_Tapasya_Necklace_2.jpg',
+    link: '/product/gold-plated-duotone-rudraksha-bracelet',
+  },
+  {
+    name: 'Gold Plated DuoTone Rudraksha Bracelet',
+    image: '/Shiv_Tapasya_Necklace_2.jpg',
     link: '/product/gold-plated-duotone-rudraksha-bracelet',
   },
 ];
 
 export default function Header() {
   const [isRudrakshaOpen, setIsRudrakshaOpen] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsRudrakshaOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsRudrakshaOpen(false);
+    }, 200); // hold for 200ms
+  };
 
   return (
     <header className="border-b relative">
@@ -43,23 +64,25 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex gap-6 items-center relative">
+          {/* Full wrapper */}
           <div
             className="relative"
-            onMouseEnter={() => setIsRudrakshaOpen(true)}
-            onMouseLeave={() => setIsRudrakshaOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <button className="text-gray-800 font-medium flex items-center gap-1 text-sm hover:text-black">
+            {/* Button */}
+            <button className="text-gray-900 font-semibold flex items-center gap-1 text-[15px] hover:text-black">
               Rudraksha
               <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </button>
 
-            {/* Fullscreen Dropdown */}
+            {/* Full Width Dropdown */}
             {isRudrakshaOpen && (
               <div className="fixed top-[100px] left-0 right-0 bg-white shadow-md border-t z-50">
                 <div className="max-w-7xl mx-auto flex px-8 py-8 gap-10">
-                  {/* Left Categories */}
+                  {/* Left Side */}
                   <div className="w-1/4 flex flex-col gap-4">
                     {rudrakshaCategories.map((category) => (
                       <Link key={category.name} href={category.link} className="flex justify-between items-center p-2 text-gray-800 hover:bg-gray-100 rounded text-sm font-semibold">
@@ -69,7 +92,7 @@ export default function Header() {
                     ))}
                   </div>
 
-                  {/* Right Products */}
+                  {/* Right Side */}
                   <div className="w-3/4 grid grid-cols-4 gap-6">
                     {rudrakshaProducts.map((product) => (
                       <Link key={product.name} href={product.link} className="text-center group">
@@ -93,7 +116,7 @@ export default function Header() {
 
           {/* Other Menus */}
           {["Spiritual Jewellery", "Karungali", "Energy Stones", "Gift Hampers", "Idols", "Support"].map((item) => (
-            <Link key={item} href="#" className="text-gray-800 font-medium text-sm hover:text-black">
+             <Link key={item} href="#" className="text-gray-900 font-semibold text-[15px] hover:text-black">
               {item}
             </Link>
           ))}
@@ -101,10 +124,10 @@ export default function Header() {
 
         {/* Icons */}
         <div className="flex items-center gap-5">
-          <Search className="w-5 h-5 text-gray-700" />
-          <User className="w-5 h-5 text-gray-700" />
-          <ShoppingCart className="w-5 h-5 text-gray-700" />
-          <button className="ml-2 px-4 py-1.5 text-xs bg-black text-white rounded-full">Chat with us</button>
+          <Search className="w-7 h-7 text-gray-700" />
+          <User className="w-7 h-7 text-gray-700" />
+          <ShoppingCart className="w-7 h-7 text-gray-700" />
+          <button className="ml-2 px-4 py-1.5 text-md bg-black text-white rounded-full">Chat with us</button>
         </div>
       </div>
     </header>
