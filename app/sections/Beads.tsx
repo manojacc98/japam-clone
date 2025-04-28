@@ -1,4 +1,5 @@
 'use client';
+
 import BeadCard from '../components/BeadCard';
 
 const beads = [
@@ -14,14 +15,16 @@ const beads = [
 
 export default function Beads() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10 bg-white">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
-        Shop By Bead/Stone
-      </h2>
-      <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
-        {beads.map((bead, index) => (
-          <BeadCard key={index} image={bead.image} name={bead.name} />
-        ))}
+    <section className="w-full bg-white py-10">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
+          Shop By Bead/Stone
+        </h2>
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+          {beads.map((bead, index) => (
+            <BeadCard key={index} image={bead.image} name={bead.name} />
+          ))}
+        </div>
       </div>
     </section>
   );
