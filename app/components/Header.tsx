@@ -7,6 +7,7 @@ import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false });
+const CartModal = dynamic(() => import('./CartModal'), { ssr: false });
 
 const rudrakshaCategories = [
   { name: 'Rudraksha Bracelets', link: '/collections/rudraksha-bracelets' },
@@ -43,6 +44,7 @@ export default function Header() {
   const [isRudrakshaOpen, setIsRudrakshaOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
@@ -87,7 +89,6 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
-
                   <div className="w-3/4 grid grid-cols-2 md:grid-cols-4 gap-6">
                     {rudrakshaProducts.map((product) => (
                       <Link key={product.name} href={product.link} className="text-center group">
@@ -121,7 +122,9 @@ export default function Header() {
             <Search className="w-7 h-7 text-gray-900" />
           </button>
           <User className="w-7 h-7 text-gray-900" />
-          <ShoppingCart className="w-7 h-7 text-gray-900" />
+          <button onClick={() => setIsCartOpen(true)}>
+            <ShoppingCart className="w-7 h-7 text-gray-900" />
+          </button>
           <button className="hidden md:block ml-2 px-4 py-1.5 text-md bg-black text-white rounded-full">
             Chat with us
           </button>
@@ -173,6 +176,7 @@ export default function Header() {
       )}
 
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 }
