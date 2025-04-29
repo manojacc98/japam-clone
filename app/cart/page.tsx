@@ -24,7 +24,7 @@ const initialCartItems = [
 ];
 
 export default function CartPage() {
-  const router = useRouter(); // ✅ use it inside the function!
+  const router = useRouter(); 
 
   const [cartItems, setCartItems] = useState(initialCartItems);
 
