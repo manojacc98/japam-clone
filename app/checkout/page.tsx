@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // ✅ Must import router here
+import { useRouter } from 'next/navigation'; 
 
 export default function CheckoutPage() {
-  const router = useRouter(); // ✅ Correct placement INSIDE the component
+  const router = useRouter(); 
 
   const [formData, setFormData] = useState({
     name: '',
@@ -25,7 +25,7 @@ export default function CheckoutPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Order Placed', formData);
-    router.push('/order-success'); // ✅ Redirect to success page
+    router.push('/order-success'); 
   };
 
   return (

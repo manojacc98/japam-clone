@@ -5,13 +5,13 @@ import { X, Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// 👉 Import your real product constants
+
 import { bestSellersProducts } from '@/app/constants/bestSellersProducts';
 import { energyStoneProducts } from '@/app/constants/energyStoneProducts';
 import { singleRudrakshaProducts } from '@/app/constants/singleRudrakshaProducts';
 import { trendingProducts } from '@/app/constants/trendingProducts';
 
-// 👉 Merge all products together
+//  Merge all products together
 const allProducts = [
   ...bestSellersProducts,
   ...energyStoneProducts,
@@ -34,12 +34,12 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-start pt-20">
       <div className="bg-white w-full max-w-5xl rounded-lg p-6 relative mx-4">
         
-        {/* ❌ Close Button */}
+        {/* x Close Button */}
         <button onClick={onClose} className="absolute top-4 right-4 text-black">
           <X className="w-6 h-6" />
         </button>
 
-        {/* 🔍 Search Input */}
+        {/* Search Input */}
         <div className="flex items-center gap-2 border rounded px-4 py-2 mb-6">
           <Search className="w-5 h-5 text-gray-500" />
           <input
@@ -51,14 +51,14 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
           />
         </div>
 
-        {/* 🗂 Tabs */}
+        {/*  Tabs */}
         <div className="flex gap-6 mb-6 font-semibold text-black"> {/* 🖤 dark text */}
           <div className="border-b-2 border-black pb-1">Products</div>
           <div className="text-gray-400">Collections</div>
           <div className="text-gray-400">Pages</div>
         </div>
 
-        {/* 🔥 Products + Suggestions */}
+        {/*  Products + Suggestions */}
         <div className="flex gap-6">
           
           {/* Left: Products List */}

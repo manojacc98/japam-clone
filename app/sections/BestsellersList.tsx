@@ -1,7 +1,7 @@
 'use client';
 
-import { bestSellersProducts } from '@/constants/bestSellersProducts';
-import ProductCard from '@/components/ProductCard';
+import { bestSellersProducts } from '../constants/bestSellersProducts';
+import ProductCard from '..//components/ProductCard';
 
 export default function BestsellersList() {
   return (

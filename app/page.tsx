@@ -1,6 +1,5 @@
 import HeroBanner from './components/HeroBanner';
 import Categories from './sections/Categories';
-// import FeaturedProducts from './sections/FeaturedProducts';
 import Bestsellers from './sections/Bestsellers';
 import Beads from './sections/Beads';
 import RootedTradition from './sections/RootedTradition';
@@ -15,7 +14,7 @@ import FooterHighlights from './components/FooterHighlights';
 
 
 // Inside JSX:
-<Beads />
+{/* <Beads /> */}
 
 
 export default function Page() {
@@ -35,7 +34,7 @@ export default function Page() {
       <FooterHighlights />
       <Footer />
 
-      {/* <FeaturedProducts /> */}
+
     </div>
   );
 }
