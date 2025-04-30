@@ -1,22 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Japam Clone
+
+A modern, responsive e-commerce frontend inspired by [Japam.in](https://japam.in), built using **Next.js**, **React**, and **Tailwind CSS**.
+
+## Features
+
+- Fully responsive layout
+- Dynamic routing for product detail pages
+- Image optimization and lazy loading
+- Clean UI closely replicating Japam.in
+- Component-based architecture
+
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Make sure you have the following installed:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v18 or later)
+- npm or yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
 
+   ```bash
+   git clone https://github.com/your-username japam-clone.git
+2. Install Dependencies:
+
+    ```bash
+    npm install
+3. Run the development server
+
+    ```bash
+    npm run dev
+4. Open your browser and navigate to
+
+    ```bash
+    http://localhost:3000
