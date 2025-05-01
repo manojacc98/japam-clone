@@ -1,6 +1,3 @@
-// app/constants/bestSellerProducts.ts
-
-
 
 export const bestSellersProducts = [
 
