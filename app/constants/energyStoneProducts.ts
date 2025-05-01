@@ -39,7 +39,31 @@ export const energyStoneProducts = [
       rating: 5,
       reviews: 9,
     },
+
+    {
+      title: 'Pyrite Stone Splash Bracelet',
+      folder: 'energy_stones/pyrite_stone_splash_bracelet',
+      images: ['splash_bracelet1.jpg', 'splash_bracelet2.jpg'],
+      price: 799,
+      originalPrice: 1299,
+      discount: '38% off',
+      rating: 5,
+      reviews: 9,
+    },
+
+    {
+      title: 'Pyrite Stone Splash Bracelet',
+      folder: 'energy_stones/pyrite_stone_splash_bracelet',
+      images: ['splash_bracelet1.jpg', 'splash_bracelet2.jpg'],
+      price: 799,
+      originalPrice: 1299,
+      discount: '38% off',
+      rating: 5,
+      reviews: 9,
+    },
   ];
   
   export default energyStoneProducts;
+
+  
   

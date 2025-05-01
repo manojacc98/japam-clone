@@ -44,6 +44,24 @@ export const trendingProducts = [
       originalPrice: 1299,
       discount: '62% off',
     },
+    {
+      title: 'Oxi-Silver Plated Panchroop Hanuman Ji Necklace2',
+      slug: 'hanuman-necklace',
+      image: '/Hanuman_Necklace.jpg',
+      hoverImage: '/Hanuman_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
+    {
+      title: 'Oxi-Silver Plated Mahabali Necklace2',
+      slug: 'bajrangbali-necklace',
+      image: '/Bajrangbali_Necklace_2.jpg',
+      hoverImage: '/Bajrangbali_Necklace_3.jpg',
+      price: 499,
+      originalPrice: 1299,
+      discount: '62% off',
+    },
   ];
   
   export default trendingProducts;

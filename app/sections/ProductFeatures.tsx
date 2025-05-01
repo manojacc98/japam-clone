@@ -24,7 +24,7 @@ const ProductFeatures = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
   const wrapperRef = useRef(null);
 
-  // ✅ Click outside to close
+  //  Click outside to close
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (

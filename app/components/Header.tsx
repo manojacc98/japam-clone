@@ -1,126 +1,182 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
-import {
-  Search,
-  User,
-  ShoppingBag,
-  MessageCircleMore,
-} from 'lucide-react';
+import Image from 'next/image';
+import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false });
+const CartModal = dynamic(() => import('./CartModal'), { ssr: false });
+
+const rudrakshaCategories = [
+  { name: 'Rudraksha Bracelets', link: '/collections/rudraksha-bracelets' },
+  { name: 'Rudraksha Malas', link: '/collections/rudraksha-malas' },
+  { name: 'Nepali Rudraksha', link: '/collections/nepali-rudraksha' },
+];
+
+const rudrakshaProducts = [
+  {
+    name: 'Silver Plated Modern Rudraksha Bracelet',
+    image: '/Om_Trishool_Necklace.jpg',
+    link: '/product/silver-plated-modern-rudraksha-bracelet',
+  },
+  {
+    name: 'Gold Plated DuoTone Rudraksha Bracelet',
+    image: '/Ganesh_Necklace.jpg',
+    link: '/product/gold-plated-duotone-rudraksha-bracelet',
+  },
+  {
+    name: 'Gold Plated DuoTone Rudraksha Bracelet2',
+    image: '/Shiv_Tapasya_Necklace_2.jpg',
+    link: '/product/gold-plated-duotone-rudraksha-bracelet',
+  },
+  {
+    name: 'Gold Plated DuoTone Rudraksha Bracelet3',
+    image: '/Shiv_Tapasya_Necklace_2.jpg',
+    link: '/product/gold-plated-duotone-rudraksha-bracelet',
+  },
+];
+
+const navItems = ["Rudraksha", "Spiritual Jewellery", "Karungali", "Energy Stones", "Gift Hampers", "Idols", "Support"];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+  const [isRudrakshaOpen, setIsRudrakshaOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setIsRudrakshaOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsRudrakshaOpen(false);
+    }, 200);
+  };
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* Announcement bar
-      <div className="bg-black text-white text-sm text-center py-1 px-4">
-        ₹20 NAMASTE Discount & Prepaid Offer
-      </div> */}
+    <header className="border-b relative">
+      <div className="flex items-center justify-between px-4 md:px-15 py-3 bg-white">
+        <Link href="/">
+          <img src="/logo.gif" alt="Japam Logo" className="h-8 md:h-10 w-auto" />
+        </Link>
 
-      {/* Main header */}
-      <div className="bg-white py-2 px-4 shadow-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/">
-            <img src="/logo.gif" alt="Logo" className="h-10" />
-          </Link>
+        <nav className="hidden md:flex gap-6 items-center">
+          <div
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button className="text-gray-900 font-semibold flex items-center gap-1 text-[15px] hover:text-black">
+              Rudraksha
+              <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
 
-          {/* Search bar */}
-          {showSearch && (
-            <div className="hidden md:block w-1/2 mx-4">
-              <input
-                type="text"
-                placeholder="Search products..."
-                className="w-full px-4 py-2 border rounded-full"
-              />
-            </div>
-          )}
-
-          {/* Icons */}
-          <Link href="/cart">
-          <div className="flex items-center gap-4">
-            <button onClick={() => setShowSearch(!showSearch)}>
-              <Search className="w-5 h-5 text-[#1e1e1e]" />
-            </button>
-            <button>
-              <User className="w-5 h-5 text-[#1e1e1e]" />
-            </button>
-            <button className="relative">
-              <ShoppingBag className="w-5 h-5 text-[#1e1e1e]" />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full px-1.5">
-                1
-              </span>
-            </button>
-            <button className="md:hidden text-2xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? '✖' : '☰'}
-            </button>
+            {isRudrakshaOpen && (
+              <div className="fixed top-[100px] left-0 right-0 bg-white shadow-md border-t z-[60] transition-all duration-300 ease-in-out">
+                <div className="max-w-7xl mx-auto flex px-8 py-8 gap-10">
+                  <div className="w-1/4 flex flex-col gap-4">
+                    {rudrakshaCategories.map((category) => (
+                      <Link key={category.name} href={category.link} className="flex justify-between items-center p-2 text-gray-800 hover:bg-gray-100 rounded text-sm font-semibold">
+                        {category.name}
+                        <span className="text-gray-400">➔</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="w-3/4 grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {rudrakshaProducts.map((product) => (
+                      <Link key={product.name} href={product.link} className="text-center group">
+                        <div className="relative w-full aspect-square overflow-hidden rounded-md bg-gray-100">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            layout="fill"
+                            objectFit="cover"
+                            className="transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <p className="mt-2 text-xs text-gray-700 group-hover:text-black">{product.name}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          </Link>
+
+          {navItems.slice(1).map((item) => (
+            <Link key={item} href="#" className="text-gray-900 font-semibold text-[15px] hover:text-black">
+              {item}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <button onClick={() => setIsSearchOpen(true)}>
+            <Search className="w-7 h-7 text-gray-900" />
+          </button>
+          <User className="w-7 h-7 text-gray-900" />
+          <button onClick={() => setIsCartOpen(true)}>
+            <ShoppingCart className="w-7 h-7 text-gray-900" />
+          </button>
+          <button className="hidden md:block ml-2 px-4 py-1.5 text-md bg-black text-white rounded-full">
+            Chat with us
+          </button>
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="block md:hidden text-gray-900">
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Navigation row */}
-      <div className="bg-white ">
-        <nav className="text-gray-800 text-sm font-medium">
-          <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-2">
-            {/* Nav links */}
-            <ul className="hidden md:flex space-x-6">
-              <li className="relative group">
-                <span className="hover:underline cursor-pointer">Rudraksha</span>
-                <ul className="absolute hidden group-hover:block bg-white text-black rounded shadow mt-2 w-40 z-50">
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">All Types</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">Nepali</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">Indonesian</Link></li>
-                </ul>
-              </li>
-              <li className="relative group">
-                <span className="hover:underline cursor-pointer">Spiritual Jewellery</span>
-                <ul className="absolute hidden group-hover:block bg-white text-black rounded shadow mt-2 w-40 z-50">
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">Bracelets</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">Necklaces</Link></li>
-                </ul>
-              </li>
-              <li><Link href="/">Karungali</Link></li>
-              <li><Link href="/">Energy Stones</Link></li>
-              <li><Link href="/">Gift Hampers</Link></li>
-              <li><Link href="/">Idols</Link></li>
-              <li className="relative group">
-                <span className="hover:underline cursor-pointer">Support</span>
-                <ul className="absolute hidden group-hover:block bg-white text-black rounded shadow mt-2 w-40 z-50">
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">Contact Us</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link href="/">FAQ</Link></li>
-                </ul>
-              </li>
-            </ul>
-
-            {/* ✅ Chat button on nav bar */}
-            <div className="hidden md:flex">
-              <button className="flex items-center gap-2 bg-[#2e2b35] text-white text-sm px-3 py-1.5 rounded-full hover:scale-105 transition">
-                <MessageCircleMore className="w-4 h-4" />
-                Chat with us
-              </button>
+      {isMobileMenuOpen && (
+        <div className="fixed top-[100px] left-0 right-0 bottom-0 bg-white shadow-md border-t z-[55] p-6 overflow-y-auto">
+          {navItems.map((item) => (
+            <div key={item} className="border-b border-gray-200">
+              {item === "Rudraksha" ? (
+                <>
+                  <div
+                    className="flex justify-between items-center py-4 font-semibold text-gray-900 cursor-pointer"
+                    onClick={() => setIsRudrakshaOpen(!isRudrakshaOpen)}
+                  >
+                    {item}
+                    <span className="text-gray-400">{isRudrakshaOpen ? "−" : ">"}</span>
+                  </div>
+                  {isRudrakshaOpen && (
+                    <div className="flex flex-col pl-6 pb-4 gap-3 text-gray-700 text-sm">
+                      {rudrakshaCategories.map((category) => (
+                        <Link key={category.name} href={category.link} className="hover:underline">
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link href="#" className="flex justify-between items-center py-4 font-semibold text-gray-900">
+                  {item}
+                  <span className="text-gray-400">{">"}</span>
+                </Link>
+              )}
             </div>
-          </div>
+          ))}
 
-          {/* Mobile menu */}
-          {isMenuOpen && (
-            <ul className="md:hidden flex flex-col gap-2 px-4 pb-4">
-              <li><Link href="/">Rudraksha</Link></li>
-              <li><Link href="/">Spiritual Jewellery</Link></li>
-              <li><Link href="/">Karungali</Link></li>
-              <li><Link href="/">Energy Stones</Link></li>
-              <li><Link href="/">Gift Hampers</Link></li>
-              <li><Link href="/">Idols</Link></li>
-              <li><Link href="/">Support</Link></li>
-            </ul>
-          )}
-        </nav>
-      </div>
+          <button className="mt-8 w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#262130] text-white rounded-lg text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 16.5a2.5 2.5 0 01-2.5 2.5h-11l-4 4V4a2 2 0 012-2h13.5a2.5 2.5 0 012.5 2.5v12z" />
+            </svg>
+            Chat with us
+          </button>
+        </div>
+      )}
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 }
-
-
